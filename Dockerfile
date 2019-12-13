@@ -49,6 +49,9 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     musl-dev \
     openssl-dev \
     which \
+    && apk --no-cache add \
+    "chromium~$CHROMIUM_VERSION" \
+    "chromium-chromedriver~$CHROMIUM_VERSION" \
     git \
     sudo \
     wget \
@@ -62,9 +65,6 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     build-base cairo-dev cairo cairo-tools \
     jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev \
     gettext \
-    && apk --no-cache add \
-    "chromium~$CHROMIUM_VERSION" \
-    "chromium-chromedriver~$CHROMIUM_VERSION" \
     xauth \
     "xvfb-run~$XVFB_VERSION" \
     && mv /usr/lib/chromium/chrome /usr/lib/chromium/chrome-original \
