@@ -91,6 +91,3 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
 
 # Update system path
 ENV PATH=/opt/robotframework/bin:/opt/robotframework/drivers:$PATH
-
-# Execute all robot tests
-CMD ["run-tests-in-virtual-screen.sh"]
