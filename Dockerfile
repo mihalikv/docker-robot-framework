@@ -1,4 +1,4 @@
-FROM python:3.7-alpine3.10
+FROM python:3.5-alpine
 
 MAINTAINER Paul Podgorsek <ppodgorsek@users.noreply.github.com>
 LABEL description Robot Framework in Docker.
@@ -49,7 +49,33 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     musl-dev \
     openssl-dev \
     which \
+    git \
+    sudo \
     wget \
+    nodejs \
+    yarn \
+    python3-setuptools \
+    unixodbc unixodbc-dev \
+    imagemagick \
+    libpq-dev \
+    python-dev \
+    python3-dev \
+    python3-pip \
+    build-essential \
+    pango1.0-tests \
+    libgconf-2-4 \
+    libcairo2-dev \
+    libffi-dev \
+    libssl-dev \
+    libjpeg-dev \
+    libtiff-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    gettext \
   && apk --no-cache add \
     "chromium~$CHROMIUM_VERSION" \
     "chromium-chromedriver~$CHROMIUM_VERSION" \
@@ -73,6 +99,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     robotframework-seleniumlibrary==$SELENIUM_LIBRARY_VERSION \
     robotframework-sshlibrary==$SSH_LIBRARY_VERSION \
     PyYAML \
+    setuptools \
 
 # Download Gecko drivers directly from the GitHub repository
   && wget -q "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
