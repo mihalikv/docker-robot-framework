@@ -75,19 +75,19 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     libssl-dev \
     libxml2-dev \
     libxslt1-dev \
-    gettext \
-  && apk --no-cache add \
+    gettext
+RUN apk --no-cache add \
     "chromium~$CHROMIUM_VERSION" \
     "chromium-chromedriver~$CHROMIUM_VERSION" \
     "firefox~$FIREFOX_VERSION" \
     xauth \
     "xvfb-run~$XVFB_VERSION" \
   && mv /usr/lib/chromium/chrome /usr/lib/chromium/chrome-original \
-  && ln -sfv /opt/robotframework/bin/chromium-browser /usr/lib/chromium/chrome \
+  && ln -sfv /opt/robotframework/bin/chromium-browser /usr/lib/chromium/chrome
 # FIXME: above is a workaround, as the path is ignored
 
 # Install Robot Framework and Selenium Library
-  && pip3 install \
+RUN pip3 install \
     --no-cache-dir \
     robotframework==$ROBOT_FRAMEWORK_VERSION \
     robotframework-databaselibrary==$DATABASE_LIBRARY_VERSION \
@@ -99,10 +99,10 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     robotframework-seleniumlibrary==$SELENIUM_LIBRARY_VERSION \
     robotframework-sshlibrary==$SSH_LIBRARY_VERSION \
     PyYAML \
-    setuptools \
+    setuptools
 
 # Download Gecko drivers directly from the GitHub repository
-  && wget -q "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
+RUN wget -q "https://github.com/mozilla/geckodriver/releases/download/$GECKO_DRIVER_VERSION/geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz" \
     && tar xzf geckodriver-$GECKO_DRIVER_VERSION-linux64.tar.gz \
     && mkdir -p /opt/robotframework/drivers/ \
     && mv geckodriver /opt/robotframework/drivers/geckodriver \
