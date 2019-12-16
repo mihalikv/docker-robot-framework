@@ -56,6 +56,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositori
     sudo \
     wget \
     nodejs \
+    postgresql-dev \
     yarn \
     py3-setuptools \
     unixodbc unixodbc-dev \
